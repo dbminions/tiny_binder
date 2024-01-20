@@ -2,8 +2,8 @@ package binder
 
 import (
 	"fmt"
-	"github.com/pingcap/tidb/parser/ast"
-	"github.com/pingcap/tidb/parser/opcode"
+	"github.com/blastrain/vitess-sqlparser/tidbparser/ast"
+	"github.com/blastrain/vitess-sqlparser/tidbparser/parser/opcode"
 	"github.com/polarsignals/frostdb/query"
 	"github.com/polarsignals/frostdb/query/logicalplan"
 	"strings"
