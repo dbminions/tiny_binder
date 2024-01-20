@@ -1,7 +1,6 @@
 package frontend
 
 import (
-	"fmt"
 	"github.com/polarsignals/frostdb/query"
 	binder "tiny_binder/pkg/b_binder"
 	parser "tiny_binder/pkg/z_parser"
@@ -21,10 +20,6 @@ func (p *Frontend) SqlToLogicalPlan(builder query.Builder, sql string) (query.Bu
 	asts, err := p.parser.Parse(sql)
 	if err != nil {
 		return nil, err
-	}
-
-	if len(asts) != 1 {
-		return nil, fmt.Errorf("cannot handle multiple asts, found %d", len(asts))
 	}
 
 	v := binder.NewASTVisitor(builder)
