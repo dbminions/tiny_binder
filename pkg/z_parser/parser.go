@@ -13,7 +13,12 @@ func NewParser() *Parser {
 	return &Parser{src: parser.New()}
 }
 
-func (p *Parser) Parse(sql string) (stmt []ast.StmtNode, err error) {
-	stmt, err = p.src.Parse(sql, "", "")
+func (p *Parser) Parse(sql string) (stmt ast.StmtNode, err error) {
+	stmt, err = p.src.ParseOneStmt(sql, "", "")
 	return stmt, err
+}
+
+func (p *Parser) GetMetadata() string {
+	//TODO: implement this
+	return ""
 }

@@ -3,11 +3,13 @@
 ### Key Components
 
 - [X] Frontend
-- [ ] Binder
 - [X] Security
-- [ ] LogicalPlan
+- [ ] Binder
+- [ ] Logical Plan Builder
 - [ ] Coercer
 - [ ] LogicalExpr
+- [ ] LogicalPlan
+- [X] Rewriter
 - [X] Catalog
 - [X] Parser
 
