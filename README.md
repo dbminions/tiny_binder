@@ -2,11 +2,14 @@
 
 ### Key Components
 
-- Parser
-- Catalog
-- Expr
-- LogicalPlan
-- Binder
+- [X] Frontend
+- [ ] Binder
+- [X] Security
+- [ ] LogicalPlan
+- [ ] Coercer
+- [ ] LogicalExpr
+- [X] Catalog
+- [X] Parser
 
 ### Reference
 - [CMU DB course](https://15721.courses.cs.cmu.edu/spring2024/project.html#comp-catalog)

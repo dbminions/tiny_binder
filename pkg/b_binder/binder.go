@@ -4,20 +4,19 @@ import (
 	"fmt"
 	"github.com/blastrain/vitess-sqlparser/tidbparser/ast"
 	"github.com/blastrain/vitess-sqlparser/tidbparser/parser/opcode"
-	"github.com/polarsignals/frostdb/query"
 	"github.com/polarsignals/frostdb/query/logicalplan"
 	"strings"
 )
 
 type AstVisitor struct {
-	Builder   query.Builder
+	Builder   logicalplan.Builder
 	Err       error
 	exprStack []logicalplan.Expr
 }
 
 var _ ast.Visitor = &AstVisitor{}
 
-func NewASTVisitor(builder query.Builder) *AstVisitor {
+func NewASTVisitor(builder logicalplan.Builder) *AstVisitor {
 	return &AstVisitor{
 		Builder: builder,
 	}
@@ -29,6 +28,9 @@ func (v *AstVisitor) Enter(n ast.Node) (nRes ast.Node, skipChildren bool) {
 		// The SelectStmt is handled in during pre-visit given that it has many
 		// clauses we need to handle independently (e.g. a group by with a
 		// filter).
+		if expr.From != nil {
+
+		}
 		if expr.Where != nil {
 			expr.Where.Accept(v)
 			lastExpr, newExprs := pop(v.exprStack)
@@ -51,8 +53,6 @@ func (v *AstVisitor) Enter(n ast.Node) (nRes ast.Node, skipChildren bool) {
 				}
 			}
 			v.Builder = v.Builder.Aggregate(agg, groups)
-		case expr.Distinct:
-			v.Builder = v.Builder.Distinct(v.exprStack...)
 		default:
 			v.Builder = v.Builder.Project(v.exprStack...)
 		}
