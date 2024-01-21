@@ -8,4 +8,5 @@ the table schema.
 > Without schema evolution, you can read schema from one parquet file, and while reading rest of files assume it stays the
 same.
 
-
+### Reference
+- [immunodb](https://github.com/codenotary/immudb/blob/65a25a5b71de2522d93ea0c5f5fc585c9a7a9f69/embedded/sql/catalog.go#L81)
